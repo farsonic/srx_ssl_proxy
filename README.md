@@ -16,7 +16,7 @@ set services ssl proxy profile ssl-fp-profile trusted-ca ssl-ca-group
 
 ```
 clear security pki local-certificate all 
-clear security pki ca-certificate all       
+clear security pki ca-certificate all | no-more       
 clear security pki crl all               
 clear security pki key-pair all 
 ```
