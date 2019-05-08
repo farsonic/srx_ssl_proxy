@@ -1,6 +1,9 @@
 ### SSL Proxy functional on SRX platforms - Quick Start
 
 #### Operational mode commands
+Pull down the latest list of trusted certificate authorities from haxx.se and load into the SRX.
+Part of the functionality below will populate the root CA's into the SRX configuration. 
+If you re-run this you will need to delete the trusted CA's and re-run this process
 ```
 file copy https://curl.haxx.se/ca/cacert.pem /var/tmp/
 request security pki generate-key-pair certificate-id ssl-fp-certificate size 2048 type rsa
@@ -10,6 +13,8 @@ request security pki ca-certificate ca-profile-group load ca-group-name ssl-ca-g
 ```
 
 #### Configuration changes for SSL Proxy
+Example configuration for basic SSL proxy. 
+The profile is references in policy configuration
 ```
 set services ssl proxy profile ssl-fp-profile root-ca ssl-fp-certificate
 set services ssl proxy profile ssl-fp-profile trusted-ca ssl-ca-group    
