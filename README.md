@@ -1,4 +1,4 @@
-# SSL Proxy functional on SRX platforms - Quick Start
+### SSL Proxy functional on SRX platforms - Quick Start
 ```
 request security pki generate-key-pair certificate-id ssl-fp-certificate size 2048 type rsa
 request security pki local-certificate generate-self-signed certificate-id ssl-fp-certificate domain-name mydomain.com subject CN=<SERIALNUMBER_OF_SRX> email user@mydomain.com add-ca-constraint
