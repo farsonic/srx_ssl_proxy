@@ -29,10 +29,10 @@ request security pki local-certificate export certificate-id ssl-fp-certificate 
 ### Example policy
 The following policy will terminate SSL sessions and act as a man-in-the-middle of the TLS Transaction. With this policy you are now free to use application inspection, IPS, URL filtering etc on the payload as it is unencrypted. 
 ```
-set security policies from-zone lab to-zone untrust policy ssl-test match source-address windows-test
-set security policies from-zone lab to-zone untrust policy ssl-test match destination-address any
-set security policies from-zone lab to-zone untrust policy ssl-test match application junos-https
-set security policies from-zone lab to-zone untrust policy ssl-test then permit application-services ssl-proxy profile-name ssl-fp-profile
+set security policies from-zone trust to-zone untrust policy ssl-test match source-address any
+set security policies from-zone trust to-zone untrust policy ssl-test match destination-address any
+set security policies from-zone trust to-zone untrust policy ssl-test match application junos-https
+set security policies from-zone trust to-zone untrust policy ssl-test then permit application-services ssl-proxy profile-name ssl-fp-profile
 ```
 
 
