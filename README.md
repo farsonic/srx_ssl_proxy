@@ -10,3 +10,14 @@ request security pki ca-certificate ca-profile-group load ca-group-name ssl-ca-g
 set services ssl proxy profile ssl-fp-profile root-ca ssl-fp-certificate     
 set services ssl proxy profile ssl-fp-profile trusted-ca ssl-ca-group         
 ```
+
+### Delete all SSL certificates and key-pairs
+
+```
+clear security pki local-certificate all 
+clear security pki ca-certificate all       
+clear security pki crl all               
+clear security pki key-pair all 
+```
+
+### Delete all SSL configuration
