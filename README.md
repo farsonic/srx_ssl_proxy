@@ -14,7 +14,7 @@ request security pki ca-certificate ca-profile-group load ca-group-name ssl-ca-g
 
 #### Configuration changes for SSL Proxy
 Example configuration for basic SSL proxy. 
-The profile is references in policy configuration
+The profile is referenced in policy configuration
 ```
 set services ssl proxy profile ssl-fp-profile root-ca ssl-fp-certificate
 set services ssl proxy profile ssl-fp-profile trusted-ca ssl-ca-group    
