@@ -26,8 +26,19 @@ This file is what needs to be copied to your clients/users to ensure they trust 
 request security pki local-certificate export certificate-id ssl-fp-certificate type pem filename /var/tmp/ssl-proxy.pem 
 ```
 
-### Delete all SSL certificates, key-pairs and configuration
+### Example policy
+The following policy will terminate SSL sessions and act as a man-in-the-middle of the TLS Transaction. With this policy you are now free to use application inspection, IPS, URL filtering etc on the payload as it is unencrypted. 
+```
+set security policies from-zone lab to-zone untrust policy ssl-test match source-address windows-test
+set security policies from-zone lab to-zone untrust policy ssl-test match destination-address any
+set security policies from-zone lab to-zone untrust policy ssl-test match application junos-https
+set security policies from-zone lab to-zone untrust policy ssl-test then permit application-services ssl-proxy profile-name ssl-fp-profile
+```
 
+
+
+### Delete all SSL certificates, key-pairs and configuration
+This will delete all PKI configuration from the SRX. 
 ```
 run clear security pki local-certificate all 
 run clear security pki ca-certificate all | no-more       
