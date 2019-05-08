@@ -15,7 +15,11 @@ set services ssl proxy profile ssl-fp-profile root-ca ssl-fp-certificate
 set services ssl proxy profile ssl-fp-profile trusted-ca ssl-ca-group    
 commit and-quit
 ```
-
+### Generate PEM format certificate
+This file is what needs to be copied to your clients/users to ensure they trust the SRX 
+```
+request security pki local-certificate export certificate-id ssl-fp-certificate type pem filename /var/tmp/ssl-proxy.pem 
+```
 
 ### Delete all SSL certificates, key-pairs and configuration
 
