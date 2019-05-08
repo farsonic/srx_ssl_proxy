@@ -18,7 +18,7 @@ run clear security pki ca-certificate all | no-more
 run clear security pki crl all               
 run clear security pki key-pair all 
 delete security pki
-delect services ssl proxy
+delete services ssl proxy
 commit and-quit
 ```
 
