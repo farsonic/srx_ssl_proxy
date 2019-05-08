@@ -10,13 +10,16 @@ set services ssl proxy profile ssl-fp-profile trusted-ca ssl-ca-group
 ```
 
 
-### Delete all SSL certificates and key-pairs
+### Delete all SSL certificates, key-pairs and configuration
 
 ```
-clear security pki local-certificate all 
-clear security pki ca-certificate all | no-more       
-clear security pki crl all               
-clear security pki key-pair all 
+run clear security pki local-certificate all 
+run clear security pki ca-certificate all | no-more       
+run clear security pki crl all               
+run clear security pki key-pair all 
+delete security pki
+delect services ssl proxy
+commit and-quit
 ```
 
 ### Delete all SSL configuration
