@@ -5,11 +5,12 @@ Pull down the latest list of trusted certificate authorities from haxx.se and lo
 Part of the functionality below will populate the root CA's into the SRX configuration. 
 If you re-run this you will need to delete the trusted CA's and re-run this process
 ```
-file copy https://curl.haxx.se/ca/cacert.pem /var/tmp/
+#file copy https://curl.haxx.se/ca/cacert.pem /var/tmp/
 request security pki generate-key-pair certificate-id ssl-fp-certificate size 2048 type rsa
 request security pki local-certificate generate-self-signed certificate-id ssl-fp-certificate domain-name mydomain.com subject CN=MY_SSL_PROXY email user@mydomain.com add-ca-constraint
 request security pki local-certificate export certificate-id ssl-fp-certificate type pem filename /var/tmp/mydomain-root.pem
-request security pki ca-certificate ca-profile-group load ca-group-name ssl-ca-group filename /var/tmp/cacert.pem | no-more 
+run request security pki ca-certificate ca-profile-group load ca-group-name ssl-ca-group filename default | no-more 
+#request security pki ca-certificate ca-profile-group load ca-group-name ssl-ca-group filename /var/tmp/cacert.pem | no-more 
 ```
 
 #### Configuration changes for SSL Proxy
